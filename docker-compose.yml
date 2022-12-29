@@ -1,0 +1,13 @@
+version: '3'
+services:
+  browser:
+    container_name: links
+    build: ./app/
+    restart: always
+    ports:
+      - "2022:22"
+    healthcheck:
+      test: ["CMD", "socat", "TCP4:localhost:5555", "-"]
+      interval: 57s
+      timeout: 3s
+      retries: 1

@@ -1,5 +1,5 @@
 version: '3'
-services:
+services: 
   browser:
     container_name: links
     build: ./app/
@@ -7,7 +7,34 @@ services:
     ports:
       - "2022:22"
     healthcheck:
-      test: ["CMD", "socat", "TCP4:localhost:5555", "-"]
+      test: ["CMD", "socat", "TCP4:localhost:22", "-"]
       interval: 57s
       timeout: 3s
       retries: 1
+  redis:
+    container_name: web-redis
+    image: redis:alpine
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
+  webpage:
+    container_name: webpage
+    build:
+      context: ./web/
+    ports:
+      - "8014:8017"
+    environment:
+      - FLAG=Br@US3rS_ar3_n0T-3n0uGH
+      - PORT=8017
+      - IP=0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8017"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

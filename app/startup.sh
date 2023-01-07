@@ -1,2 +1,2 @@
 #!/bin/bash
-links google.com # Replace google for task page.
+links 172.17.0.1:8014 # Заменить на домен при деплое

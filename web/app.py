@@ -1,6 +1,5 @@
-# save this as app.py
 import string
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, session, request, abort
 import os
 import random
 import secrets
@@ -32,7 +31,11 @@ def check():
 	else:
 		return "Ты правда думал, что всё так просто?"
     
-
+@app.route('/data.html')
+def data():
+    if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
+        abort(403) # Запретить доступ, если запрос не AJAX
+    return render_template('data.html')
 
 if __name__ == "__main__":
     app.run(debug=False, host=os.environ['IP'], port=os.environ['PORT'])

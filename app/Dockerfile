@@ -10,7 +10,7 @@ RUN groupadd sshgroup && usermod -aG sshgroup browser && mkdir /var/run/sshd
 RUN echo 'root:N0tRequ1r3d' | chpasswd && echo 'browser:0nlySt@rtup' | chpasswd
 COPY ./sshd_config /etc/ssh/sshd_confog
 RUN mkdir /home/browser/.ssh \
-    && echo 'command="/usr/bin/startup.sh" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDhZgdSFMi+HwijNU1bQBCJN1ecF7AeZ4/YoALdNQ8mTDITP15Y3Ld5jb2ZIelZ+20QQEdwImQKyNMJDhBduIh6Xz+J9C1b2NLEA6nK1gU/+HR1R+fJ6O3OShVxV9/ItJrPEb+rY/P7OK6Feyi8p7UXgH1M8I7RsJJNQ69XiAoJbaO5+jCQPG2EqDgBBSzLGLf05KE3OyOOnNROEqnyZHX/HC6frgtZGMfNm3Hk+aEkIoRI8Pag0HQAphnBdIcJzokjfAVmzoDT+3EjhkXXec/1mUd4ckD1aJ3MMnx2h8fJHp9lIl9EjNcX+YJaISoX1BdCwbWihAhfRv27ZTnWd9JQ0bj6wVj4WfGDjIODOVrx0EB6dlbpBAOvczXxpG8BeYRSBBjy1mW5cDjZQr96ZB0rp2j8P8oTf3H9VFXQV0fOilZOVYlspXnLG2RdpDEjV//KUpkNDCgfAQOcEh/VKUaQZV+PxR4DpBB+y4Qtw6nqSxr6TnnEslZ/3vz3TOieis8= kali@kali' > /home/browser/.ssh/authorized_keys \
+    && echo 'command="/usr/bin/startup.sh" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRwLNUVV58sYFyjmf9eqIE51m3P8qrSN+2QiwwXaDvx/qepzpfpEYnAxAG0Hh9m8pMhwn55TT4lv0u/a7LoQY5Q8Od09jX4OiiMYvfXqk2nA2Y6HJbykM76NcQAMtNFnomQi8qYpSGLWa3+hGx8QuShX/48IZg+pam6W3lFlwB9yzJhr1uT5pIKyrD4HBE5eyyl/F+d+owS5Sr8sNAwV2Uo1uhKLJaoliKkLqPwD/tDb8KjAeI5grsbq5W/9FY7u29gN4Nu8Rn3jsyXHA5j572sNZ4nNBIkA2UqrrPcSkhasYBnIthZO5IsHw2j7L+lv6W362N4StvVbkcHDjkfvL4qagqtcCySNj5Zm/ewhmXb0uUNNsGe2RTCWrNXWCaiNQwDCj4rXwrzZnBS4e3uH2BSAkM4fHptGXpbBB7K7d65CCx3vSqOkuU5GXOR6AUmLT75QTk7W/bHqZnCpbUrTGQucxfnPhVnTGZed/DZ8Kf0O0IxoptahUTUs9NE/4yOus= kali@kali' > /home/browser/.ssh/authorized_keys \
     && service ssh start 
 RUN chmod u-s $(which passwd)
 

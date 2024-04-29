@@ -59,7 +59,7 @@ Links (2.28; Linux 6.ø.ø-ka1i3-amd64 x86_64; GNU C 12.2; text)
 
 ## Flag 
 ```
-Br@US3rS_ar3_n0T-3n0uGH
+MCTF{W311_d0n4_Us3r@g3nt_tr1ckS}
 ```
 ## TODO 
 - ~~Idea~~
